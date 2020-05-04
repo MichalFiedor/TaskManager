@@ -96,7 +96,6 @@ public class TaskManager {
         }
         newTask[2] = scan.next();
         tasksArray = ArrayUtils.add(tasksArray, newTask);
-        System.out.println(Arrays.deepToString(tasksArray));
     }
 
     public static void removeTool() throws IndexOutOfBoundsException {
