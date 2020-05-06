@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class TaskManager {
@@ -36,11 +35,12 @@ public class TaskManager {
 
     public static void selectOption() {
         Scanner scan = new Scanner(System.in);
-        while (!scan.hasNext("add") && !scan.hasNext("remove") && !scan.hasNext("list") && !scan.hasNext("exit")) {
+        String choice = scan.next().toLowerCase();
+        while (!choice.equals("add") && !choice.equals("remove") && !choice.equals("list") && !choice.equals("exit")) {
             System.out.println(ConsoleColors.RED_BOLD + "Incorrect choice. Try again." + ConsoleColors.RESET);
-            scan.next();
+            choice = scan.next().toLowerCase();
         }
-        switch (scan.next().toLowerCase()) {
+        switch (choice) {
             case "add":
                 addTool();
                 break;
@@ -68,7 +68,7 @@ public class TaskManager {
                 if (scanner.next().toLowerCase().equals("yes")) {
                     Files.createFile(pathTaskFile);
                 } else {
-                    System.exit(1);
+                    System.exit(0);
                 }
             } catch (IOException e) {
                 System.out.println("File can not be created.");
@@ -98,7 +98,7 @@ public class TaskManager {
         tasksArray = ArrayUtils.add(tasksArray, newTask);
     }
 
-    public static void removeTool() throws IndexOutOfBoundsException {
+    public static void removeTool() {
         System.out.println("Please select number to remove.");
         Scanner scan = new Scanner(System.in);
         while (!scan.hasNextInt()) {
@@ -131,7 +131,7 @@ public class TaskManager {
         System.out.println(ConsoleColors.RED_BOLD + "Bye bye");
         try (FileWriter fileWriter = new FileWriter("tasks.csv")) {
             for (int i = 0; i < tasksArray.length; i++) {
-                for(String data : tasksArray[i]){
+                for (String data : tasksArray[i]) {
                     fileWriter.append(data + " ");
                 }
                 fileWriter.append("\n");
@@ -139,7 +139,7 @@ public class TaskManager {
         } catch (IOException e) {
             e.getStackTrace();
         }
-        System.exit(1);
+        System.exit(0);
     }
 }
 
