@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 TaskManager/idea/
+=======
+.idea/
+>>>>>>> 48d23fbfea0ad45cab2c3685e1b816a566207c76
 *.csv
