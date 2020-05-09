@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class TaskManager {
     static File file = new File("tasks.csv");
     static Path pathTaskFile = Paths.get("tasks.csv");
-    static String[][] tasksArray = new String[0][3];
+    static String[][] tasksArray = new String[0][0];
 
     public static void main(String[] args) throws FileNotFoundException {
         loadingFile();
@@ -61,13 +61,15 @@ public class TaskManager {
             try {
                 System.out.println("At this moment you do not have any saved tasks.\nDo you want create new tasks sheet?" + "(" + ConsoleColors.BLACK_BOLD + "Yes/No" + ConsoleColors.RESET + ")");
                 Scanner scanner = new Scanner(System.in);
-                while (scanner.hasNextInt()) {
+                String choice = scanner.next();
+                while (!choice.toLowerCase().equals("yes") && !choice.toLowerCase().equals("no")) {
                     System.out.println(ConsoleColors.RESET + "If you want create new sheet, type" + ConsoleColors.BLACK_BOLD + " Yes" + ConsoleColors.RESET + ", if not, type" + ConsoleColors.BLACK_BOLD + " No" + ".");
-                    scanner.next();
+                    choice=scanner.next();
                 }
-                if (scanner.next().toLowerCase().equals("yes")) {
+                if (choice.toLowerCase().equals("yes")) {
                     Files.createFile(pathTaskFile);
-                } else {
+                } else if(choice.toLowerCase().equals("no")) {
+                    System.out.println(ConsoleColors.RED_BOLD + "Bye bye");
                     System.exit(0);
                 }
             } catch (IOException e) {
