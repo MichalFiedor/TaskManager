@@ -4,7 +4,7 @@ Simple application to management your tasks. You can create new task sheet or ad
 * add - tool to adding new tasks. You can:
   - add task description, 
   - task due date,
-  - give importance of task,
+  - give importance of task.
 * remove - tool to remove unneeded tasks,
 * list - tool which enable show actuall tasks from your task sheet.
 * exit - after taped this commend all your changes are saved in tasks.csv. and application is closing.
