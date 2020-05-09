@@ -1,2 +1,2 @@
-out/
-tasks.csv
+TaskManager/out/
+*.csv
